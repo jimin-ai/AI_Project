@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>510</width>
+    <height>249</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTableWidget" name="app_model_search">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>510</width>
+     <height>250</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>모델명</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>소비전력</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>용량</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>등급</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>탄소인증</string>
+    </property>
+   </column>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
