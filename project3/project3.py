@@ -269,35 +269,46 @@ class btnTop_class(QMainWindow, Ui_dialog):
         # print(text)
         # # result22=dbConn.log1(text)
         # # print(result22)
-
+        
 
          
         
         a = self.app_combo_type.currentIndex()
 
         if a == 0:
-            result = dbConn.log()
+           # 디비에 로그 값을 가져온다
+            result = dbConn.HOMEAPP()
             # 디비에 로그1 값을 가져온다
-            result1 = dbConn.log1()
+            result1 = dbConn.HOMEAPP1()
+            result2 = dbConn.HOMEAPP2()
+            result3 = dbConn.HOMEAPP3()
+            result4 = dbConn.HOMEAPP4()
             # 불러올 테이블 모델의 크기를 정한다 
-            self.app_model_search.setRowCount(200)
+            self.app_model_search.setRowCount(142)
             # 위 동일
             self.app_model_search.setColumnCount(5)
             # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
-            for i in range(len(result1)):
+            for i in range(len(result)):
                 # 값을 쉽게 입력하기 위해 변수 지정
-                a = result1[i]
+                a = result[i]
                 # 모델에 i행 0열 에 a값 str로 입력
                 self.app_model_search.setItem(i,0, QTableWidgetItem(str(a)))
             # 위와 동일 방법
-            for i in range(len(result)):
-                a = result[i]
+            for i in range(len(result1)):
+                a = result1[i]
                 self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
 
-        # elif a == 1:
-        #     Modelsearch.show()
-        # elif a == 2:
-        #     Modelsearch.show()
+            for i in range(len(result2)):
+                a = result2[i]
+                self.app_model_search.setItem(i,2, QTableWidgetItem(str(a)))
+
+            for i in range(len(result3)):
+                a = result3[i]
+                self.app_model_search.setItem(i,3, QTableWidgetItem(str(a)))
+
+            for i in range(len(result4)):
+                a = result4[i]
+                self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
 
  
     def set_funcFrame(self):
