@@ -35,7 +35,7 @@ charity_check_class = uic.loadUiType("project3/charitycheck.ui")[0]
 # model_search_class = uic.loadUiType("project3/modelsearch.ui")[0]
 #-----------------------------------------------------!
 #회원정보수정 페이지
-member_update_class=uic.loadUiType("project3/update.ui")[0]
+# member_update_class=uic.loadUiType("project3/update.ui")[0]
 # 회원탈퇴 선택 페이지
 member_delete_class = uic.loadUiType("project3/memberdelete.ui")[0]
 # 회원탈퇴 입력 페이지
@@ -125,32 +125,32 @@ class Joincheck_class(QDialog,joincheck_class):
         Login.show()
 
 # 회원수정 페이지 클래스
-class Member_Update_class(QDialog, member_update_class):
-    # 기본값 입력
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        self.my_btn_updatedone.clicked.connect(self.member_update_close)
+# class Member_Update_class(QDialog, member_update_class):
+#     # 기본값 입력
+#     def __init__(self):
+#         super().__init__()
+#         self.setupUi(self)
+#         self.my_btn_updatedone.clicked.connect(self.member_update_close)
 
-    def member_update_close(self):
-        Update.close()
-        # UpdateCheck.show()
-        inputId = self.my_update_edit_id.text()
-        inputPw = self.my_update_edit_pw.text()
-        inputName = self.my_update_edit_name.text()
-        inputPhone = self.my_update_edit_phone.text()
-        inputFamily = self.my_update_edit_family.text()
+#     def member_update_close(self):
+#         Update.close()
+#         # UpdateCheck.show()
+#         inputId = self.my_update_edit_id.text()
+#         inputPw = self.my_update_edit_pw.text()
+#         inputName = self.my_update_edit_name.text()
+#         inputPhone = self.my_update_edit_phone.text()
+#         inputFamily = self.my_update_edit_family.text()
 
-        result = dbConn.update_all(inputId, inputPw, inputName, inputPhone, inputFamily)
-        if result ==0:
-            print("회원정보 수정 실패")
-        else:
-            print(inputId, '회원정보 수정 완료 !')
-            self.my_update_edit_id.setText("")    #값초기화
-            self.my_update_edit_pw.setText("")
-            self.my_update_edit_name.setText("")
-            self.my_update_edit_phone.setText("")
-            self.my_update_edit_family.setText("")
+#         result = dbConn.update_all(inputId, inputPw, inputName, inputPhone, inputFamily)
+#         if result ==0:
+#             print("회원정보 수정 실패")
+#         else:
+#             print(inputId, '회원정보 수정 완료 !')
+#             self.my_update_edit_id.setText("")    #값초기화
+#             self.my_update_edit_pw.setText("")
+#             self.my_update_edit_name.setText("")
+#             self.my_update_edit_phone.setText("")
+#             self.my_update_edit_family.setText("")
         
     
 
@@ -380,7 +380,7 @@ if __name__ == "__main__":
     # Modelsearch = Model_search_class()
 
     #회원정보 수정
-    Update=Member_Update_class()
+    # Update=Member_Update_class()
 
     # 회원탈퇴
     Memberdelete = Member_delete_class()
