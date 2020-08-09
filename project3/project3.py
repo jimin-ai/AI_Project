@@ -32,7 +32,7 @@ loginfail_class = uic.loadUiType("project3/loginfail.ui")[0]
 #-----------------------------------------------------!
 #기부 성공페이지
 charity_check_class = uic.loadUiType("project3/charitycheck.ui")[0]
-model_search_class = uic.loadUiType("project3/modelsearch.ui")[0]
+# model_search_class = uic.loadUiType("project3/modelsearch.ui")[0]
 #-----------------------------------------------------!
 # 회원탈퇴 선택 페이지
 member_delete_class = uic.loadUiType("project3/memberdelete.ui")[0]
@@ -166,29 +166,29 @@ class Member_dlt_suc_class(QDialog,member_dlt_suc_class):
             Memberdltsuc.close()
 
 
-# 모델 검색 창 클래스
-class Model_search_class(QDialog,model_search_class):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-        # 디비에 로그 값을 가져온다
-        result = dbConn.log()
-        # 디비에 로그1 값을 가져온다
-        result1 = dbConn.log1()
-        # 불러올 테이블 모델의 크기를 정한다 
-        self.app_model_search.setRowCount(30)
-        # 위 동일
-        self.app_model_search.setColumnCount(5)
-        # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
-        for i in range(len(result1)):
-            # 값을 쉽게 입력하기 위해 변수 지정
-            a = result1[i]
-            # 모델에 i행 0열 에 a값 str로 입력
-            self.app_model_search.setItem(i,0, QTableWidgetItem(str(a)))
-        # 위와 동일 방법
-        for i in range(len(result)):
-            a = result[i]
-            self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
+# # 모델 검색 창 클래스
+# class Model_search_class(QDialog,model_search_class):
+#     def __init__(self):
+#         super().__init__()
+#         self.setupUi(self)
+#         # 디비에 로그 값을 가져온다
+#         result = dbConn.log()
+#         # 디비에 로그1 값을 가져온다
+#         result1 = dbConn.log1()
+#         # 불러올 테이블 모델의 크기를 정한다 
+#         self.app_model_search.setRowCount(30)
+#         # 위 동일
+#         self.app_model_search.setColumnCount(5)
+#         # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
+#         for i in range(len(result1)):
+#             # 값을 쉽게 입력하기 위해 변수 지정
+#             a = result1[i]
+#             # 모델에 i행 0열 에 a값 str로 입력
+#             self.app_model_search.setItem(i,0, QTableWidgetItem(str(a)))
+#         # 위와 동일 방법
+#         for i in range(len(result)):
+#             a = result[i]
+#             self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
 
 #메인_2 페이지 클래스
 class btnTop_class(QMainWindow, Ui_dialog):
@@ -205,9 +205,63 @@ class btnTop_class(QMainWindow, Ui_dialog):
         #-----------------------------------------------------!
         self.stackedWidget.setCurrentIndex(0) #main페이지가 로그인 했을 때 첫번째로 뜨게함.
         # self.show()
-        self.app_btn_search.clicked.connect(self.modelserach_show)
+        # self.app_btn_search.clicked.connect(self.modelserach_show)
         # 회원탈퇴페이지 쇼 버튼
         self.my_btn_delete.clicked.connect(self.memberdelete_show)
+        # a=self.app_combo_type.currentText()
+        self.app_btn_search.clicked.connect(self.app_search_show)
+        # print(a)
+    def app_search_show(self):
+        
+        
+        text=self.app_combo_type.currentText()
+        
+        
+        if text == "청소기":
+            text="VC"
+        elif text == "전자렌지":
+            text ="MW"
+        elif text == "전기밥솥":
+            text = "RC"
+        elif text == "에어컨":
+            text ="AC"
+        elif text == "세탁기":
+            text = "WS"
+        elif text == "tv":
+            text = "TV"
+        print(text)
+        # result22=dbConn.log1(text)
+        # print(result22)
+
+
+         
+        
+        a = self.app_combo_type.currentIndex()
+
+        if a == 0:
+            result = dbConn.log()
+            # 디비에 로그1 값을 가져온다
+            result1 = dbConn.log1()
+            # 불러올 테이블 모델의 크기를 정한다 
+            self.app_model_search.setRowCount(200)
+            # 위 동일
+            self.app_model_search.setColumnCount(5)
+            # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
+            for i in range(len(result1)):
+                # 값을 쉽게 입력하기 위해 변수 지정
+                a = result1[i]
+                # 모델에 i행 0열 에 a값 str로 입력
+                self.app_model_search.setItem(i,0, QTableWidgetItem(str(a)))
+            # 위와 동일 방법
+            for i in range(len(result)):
+                a = result[i]
+                self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
+
+        # elif a == 1:
+        #     Modelsearch.show()
+        # elif a == 2:
+        #     Modelsearch.show()
+
  
     def set_funcFrame(self):
         btn_c = self.sender()
@@ -251,12 +305,18 @@ class btnTop_class(QMainWindow, Ui_dialog):
         Check.show()
     #-----------------------------------------------------!
 
-    def modelserach_show(self):
-        Modelsearch.show()
+    # 이제는 필요없어진 기능
+    # 모델 창 띄우기
+    # def modelserach_show(self):
+    #     Modelsearch.show()
 
     # 회원탈퇴 페이지 쇼
     def memberdelete_show(self):
         Memberdelete.show()
+
+    
+
+
 
 
 if __name__ == "__main__":
@@ -277,7 +337,7 @@ if __name__ == "__main__":
     #기부성공
     Check = Charity_Check_Class()
     #-----------------------------------------------------!
-    Modelsearch = Model_search_class()
+    # Modelsearch = Model_search_class()
 
     # 회원탈퇴
     Memberdelete = Member_delete_class()

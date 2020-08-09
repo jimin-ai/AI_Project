@@ -38,12 +38,13 @@ class DBconn:
         return result
 
     # 셀렉트 할 함수를 정의한다
-    def log1(self):
+    def log1(self,dddd):
         # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
         # 빈 리스트 값을 지정해준다
         ho_list=[]
         # 값을 불러온다
-        select_sql = "select * from homeappliances"
+        
+        select_sql = f"select * from homeappliances where APP_CODE={dddd}"
         # 값을 불러온다
         self.cursor.execute(select_sql)
         # 불러온 값을 저장한다
