@@ -8,9 +8,11 @@ from matplotlib.backends.backend_qt5agg import (
     NavigationToolbar2QT as NavigationToolbar)
 import random
 import numpy as np
-from pyecharts.charts import Pie
+from matplotlib import rcParams
+import matplotlib.pyplot as plt
 
-
+# import pyecharts.charts as cht
+# from pyecharts import options as opts
 
 Ui_MainWindow, QMainWindow = uic.loadUiType('project3/matplotlib test/test_1.ui')
 
@@ -23,8 +25,10 @@ class Main(QMainWindow,Ui_MainWindow) :
 
     
     # plot된 figure를 컨테이너에 삽입하는 메소드
-    def addmpl(self, fig):
-        self.canvas = FigureCanvas(fig)
+    def addmpl(self):
+        
+        self.fig = plt.Figure()
+        self.canvas = FigureCanvas(self.fig)
         #플롯을 포함한 figurecanvas의 위젯을 만듬.
         #addWidget은 레이아웃에 위젯을 추가하는 것을 말함.
         self.mplwindow.addWidget(self.canvas) 
@@ -50,25 +54,15 @@ class Main(QMainWindow,Ui_MainWindow) :
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
+    labels = ['수도권', '동남권', '충청권', '호남권', '대경권', '강원권', '제주']
+    ratio = [50.10, 15.26, 10.67, 9.89, 9.81, 2.97, 1.29]
+
+    pie = cht.Pie()
+    pie.add("대한민국 인구비율", list(zip(labels, ratio)), radius=150)
+    pie.set_global_opts(title_opts=opts.TitleOpts(title="7대 권역별 인구비율", 
+    subtitle="2018-2019 기준"),toolbox_opts=opts.ToolboxOpts())
+
     
-    attr = ['A','B','C','D','E','F']
-    v1 = [10, 20, 30, 40, 50, 60]
-    v2 = [38, 28, 58, 48, 78, 68]
-    pie = Pie("name", title_pos = 'center', width = '900')
-    pie.add("A", attr, v1, center=[25, 50], is_random=True, radius=[30, 75], rosetype='radius')
-    pie.add("B", attr, v2, center=[75, 50], is_randome=True, radius=[30, 75], rosetype='area', is_legend_show=False,
-        is_label_show=True)
-
-    # fig1 = Figure()
-    # ax1f1 = fig1.add_subplot(111)
-    # ax1f1.plot(np.random.rand(5))
-
-    # fig2 = Figure()
-    # #add_subplot >> 행x열x순서 (211)의 경우 아래로 2행 1열의 첫번째 요소라는 뜻.
-    # ax1f2 = fig2.add_subplot(211)
-    # ax1f2.plot(np.random.rand(5), ls='--')
-    # ax2f2 = fig2.add_subplot(212)
-    # ax2f2.plot(np.random.rand(10))
  
     
     main = Main()
@@ -77,7 +71,7 @@ if __name__ == "__main__":
     
     # input()
     # main.rmmpl()
-    main.addmpl(pie)
+    main.addmpl(centre_circle)
     main.show()
     
     sys.exit(app.exec_())
