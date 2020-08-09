@@ -1,12 +1,12 @@
 # 필요한 함수들을 불러오기
 import  sys
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QMainWindow, QTableWidgetItem
+from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QMainWindow, QTableWidgetItem, QTableWidget,QCheckBox,QBoxLayout
 from PyQt5 import uic
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import pandas as pd
 from DBcon import DBconn
-
+from PyQt5 import Qt,QtCore
 # DBconn 파일과 연동
 dbConn = DBconn()
 
@@ -262,6 +262,18 @@ class btnTop_class(QMainWindow, Ui_dialog):
             # 불러올 컬럼 수 정하기
             self.app_model_search.setColumnCount(5)
             # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
+            
+            self.checkBoxList=[]
+            for i in range(len(Vc_name)):
+                ckbox=QCheckBox()
+                self.checkBoxList.append(ckbox)
+
+            for i in range(len(Vc_name)):
+                 QTableWidget().setCellWidget(i,5,self.checkBoxList[i])
+            QTableWidget().move(0,0)
+
+
+
             for i in range(len(Vc_name)):
                 # 값을 쉽게 입력하기 위해 변수 지정
                 a = Vc_name[i]
@@ -286,6 +298,7 @@ class btnTop_class(QMainWindow, Ui_dialog):
                 a = Vc_carbon[i]
                 self.app_model_search.setRowCount(len(Vc_carbon))
                 self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
+     
 
         # 전자렌지
         elif combo_type_num == 1:
@@ -431,6 +444,7 @@ class btnTop_class(QMainWindow, Ui_dialog):
                 a = Tv_carbon[i]
                 self.app_model_search.setRowCount(len(Tv_carbon))
                 self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
+            
 
         # 냉장고
         elif combo_type_num == 6:
@@ -461,24 +475,10 @@ class btnTop_class(QMainWindow, Ui_dialog):
                 self.app_model_search.setRowCount(len(Rf_carbon))
                 self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
         
-        # text=self.app_combo_type.currentText()
+       
         
         
-        # if text == "청소기":
-        #     text="VC"
-        # elif text == "전자렌지":
-        #     text ="MW"
-        # elif text == "전기밥솥":
-        #     text = "RC"
-        # elif text == "에어컨":
-        #     text ="AC"
-        # elif text == "세탁기":
-        #     text = "WS"
-        # elif text == "tv":
-        #     text = "TV"
-        # print(text)
-        # # result22=dbConn.log1(text)
-        # # print(result22)
+
         
 
          
