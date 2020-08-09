@@ -34,6 +34,8 @@ loginfail_class = uic.loadUiType("project3/loginfail.ui")[0]
 charity_check_class = uic.loadUiType("project3/charitycheck.ui")[0]
 # model_search_class = uic.loadUiType("project3/modelsearch.ui")[0]
 #-----------------------------------------------------!
+#회원정보수정 페이지
+member_update_class=uic.loadUiType("project3/update.ui")[0]
 # 회원탈퇴 선택 페이지
 member_delete_class = uic.loadUiType("project3/memberdelete.ui")[0]
 # 회원탈퇴 입력 페이지
@@ -121,6 +123,41 @@ class Joincheck_class(QDialog,joincheck_class):
         JoinCheck.close()
         Join.close()
         Login.show()
+
+# 회원수정 페이지 클래스
+class Member_Update_class(QDialog, member_update_class):
+    # 기본값 입력
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.my_btn_updatedone.clicked.connect(self.member_update_close)
+
+    def member_update_close(self):
+        Update.close()
+        # UpdateCheck.show()
+        inputId = self.my_update_edit_id.text()
+        inputPw = self.my_update_edit_pw.text()
+        inputName = self.my_update_edit_name.text()
+        inputPhone = self.my_update_edit_phone.text()
+        inputFamily = self.my_update_edit_family.text()
+
+        result = dbConn.update_all(inputId, inputPw, inputName, inputPhone, inputFamily)
+        if result ==0:
+            print("회원정보 수정 실패")
+        else:
+            print(inputId, '회원정보 수정 완료 !')
+            self.my_update_edit_id.setText("")    #값초기화
+            self.my_update_edit_pw.setText("")
+            self.my_update_edit_name.setText("")
+            self.my_update_edit_phone.setText("")
+            self.my_update_edit_family.setText("")
+        
+    
+
+# class Member_Updatecheck_class(QDialog, member_updatecheck_class):
+#     def __init__(self):
+#         super().__init__()
+#         self.setupUi(self)
 
 # 회원탈퇴 선택 페이지 클래스
 class Member_delete_class(QDialog,member_delete_class):
@@ -214,24 +251,24 @@ class btnTop_class(QMainWindow, Ui_dialog):
     def app_search_show(self):
         
         
-        text=self.app_combo_type.currentText()
+        # text=self.app_combo_type.currentText()
         
         
-        if text == "청소기":
-            text="VC"
-        elif text == "전자렌지":
-            text ="MW"
-        elif text == "전기밥솥":
-            text = "RC"
-        elif text == "에어컨":
-            text ="AC"
-        elif text == "세탁기":
-            text = "WS"
-        elif text == "tv":
-            text = "TV"
-        print(text)
-        # result22=dbConn.log1(text)
-        # print(result22)
+        # if text == "청소기":
+        #     text="VC"
+        # elif text == "전자렌지":
+        #     text ="MW"
+        # elif text == "전기밥솥":
+        #     text = "RC"
+        # elif text == "에어컨":
+        #     text ="AC"
+        # elif text == "세탁기":
+        #     text = "WS"
+        # elif text == "tv":
+        #     text = "TV"
+        # print(text)
+        # # result22=dbConn.log1(text)
+        # # print(result22)
 
 
          
@@ -314,6 +351,9 @@ class btnTop_class(QMainWindow, Ui_dialog):
     def memberdelete_show(self):
         Memberdelete.show()
 
+    def member_update_show(self):
+        Update.show()
+
     
 
 
@@ -338,6 +378,9 @@ if __name__ == "__main__":
     Check = Charity_Check_Class()
     #-----------------------------------------------------!
     # Modelsearch = Model_search_class()
+
+    #회원정보 수정
+    Update=Member_Update_class()
 
     # 회원탈퇴
     Memberdelete = Member_delete_class()
