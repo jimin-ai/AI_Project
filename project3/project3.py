@@ -233,18 +233,6 @@ class Member_dlt_suc_class(QDialog,member_dlt_suc_class):
 #             a = result[i]
 #             self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
 
-        for i in range(len(result2)):
-            a = result2[i]
-            self.app_model_search.setItem(i,2, QTableWidgetItem(str(a)))
-
-        for i in range(len(result3)):
-            a = result3[i]
-            self.app_model_search.setItem(i,3, QTableWidgetItem(str(a)))
-
-        for i in range(len(result4)):
-            a = result4[i]
-            self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
-
 #메인_2 페이지 클래스
 class btnTop_class(QMainWindow, Ui_dialog):
     def __init__(self):
@@ -743,6 +731,10 @@ class btnTop_class(QMainWindow, Ui_dialog):
     # 회원탈퇴 페이지 쇼
     def memberdelete_show(self):
         Memberdelete.show()
+
+    
+
+
 
 
 
