@@ -12,14 +12,6 @@ dbConn = DBconn()
 
 #stacked만든 거 가져오기
 from main import Ui_dialog
-# from main_2 import btnTop_class
-
-# BtnTop=btnTop_class()
-
-#stacked한 것을 py파일로 변형하기(command에서함.지워도됨)
-#pyuic5 -x project_hyun/project2/main.ui -o main.py
-
-
 
 # 로그인 페이지 지정
 login_class = uic.loadUiType("login.ui")[0]
@@ -32,7 +24,6 @@ loginfail_class = uic.loadUiType("loginfail.ui")[0]
 #-----------------------------------------------------!
 #기부 성공페이지
 charity_check_class = uic.loadUiType("charitycheck.ui")[0]
-# model_search_class = uic.loadUiType("modelsearch.ui")[0]
 #-----------------------------------------------------!
 #회원정보수정 페이지
 member_update_class=uic.loadUiType("update.ui")[0]
@@ -40,9 +31,8 @@ member_update_class=uic.loadUiType("update.ui")[0]
 member_delete_class = uic.loadUiType("memberdelete.ui")[0]
 # 회원탈퇴 입력 페이지
 member_dlt_suc_class = uic.loadUiType("memberdeletesuccess.ui")[0]
-
 #-----------------------------------------------------!
-#기부성공페이지
+#기부성공페이지##
 class Charity_Check_Class(QDialog,charity_check_class):
     # 기본값 입력
     def __init__(self):
@@ -93,8 +83,6 @@ class Join_class(QDialog,join_class):
 
 
     def joincheck_show(self):
-
-
         inputId=self.txt_id.text()
         inputPw=self.txt_pw.text()
         inputName=self.txt_name.text()
@@ -152,13 +140,6 @@ class Member_Update_class(QDialog, member_update_class):
             self.my_update_edit_phone.setText("")
             self.my_update_edit_family.setText("")
         
-    
-
-# class Member_Updatecheck_class(QDialog, member_updatecheck_class):
-#     def __init__(self):
-#         super().__init__()
-#         self.setupUi(self)
-
 # 회원탈퇴 선택 페이지 클래스
 class Member_delete_class(QDialog,member_delete_class):
     def __init__(self):
@@ -239,10 +220,6 @@ class btnTop_class(QMainWindow, Ui_dialog):
             self.app_model_search.setColumnCount(5)
             # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
             
-            
-
-
-
             for i in range(len(Vc_name)):
                 # 값을 쉽게 입력하기 위해 변수 지정
                 a = Vc_name[i]
@@ -443,53 +420,7 @@ class btnTop_class(QMainWindow, Ui_dialog):
                 a = Rf_carbon[i]
                 self.app_model_search.setRowCount(len(Rf_carbon))
                 self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
-        
-       
-        
-        
-
-        
-
          
-        
-        # a = self.app_combo_type.currentIndex()
-
-        # if a == 0:
-        #    # 디비에 로그 값을 가져온다
-        #     result = dbConn.HOMEAPP()
-        #     # 디비에 로그1 값을 가져온다
-        #     result1 = dbConn.HOMEAPP1()
-        #     result2 = dbConn.HOMEAPP2()
-        #     result3 = dbConn.HOMEAPP3()
-        #     result4 = dbConn.HOMEAPP4()
-        #     # 불러올 테이블 모델의 크기를 정한다 
-        #     self.app_model_search.setRowCount(142)
-        #     # 위 동일
-        #     self.app_model_search.setColumnCount(5)
-        #     # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
-        #     for i in range(len(result)):
-        #         # 값을 쉽게 입력하기 위해 변수 지정
-        #         a = result[i]
-        #         # 모델에 i행 0열 에 a값 str로 입력
-        #         self.app_model_search.setItem(i,0, QTableWidgetItem(str(a)))
-        #     # 위와 동일 방법
-        #     for i in range(len(result1)):
-        #         a = result1[i]
-        #         self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
-
-        #     for i in range(len(result2)):
-        #         a = result2[i]
-        #         self.app_model_search.setItem(i,2, QTableWidgetItem(str(a)))
-
-        #     for i in range(len(result3)):
-        #         a = result3[i]
-        #         self.app_model_search.setItem(i,3, QTableWidgetItem(str(a)))
-
-        #     for i in range(len(result4)):
-        #         a = result4[i]
-        #         self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
-
- 
     def set_funcFrame(self):
         btn_c = self.sender()
         if btn_c.isChecked():
@@ -532,10 +463,6 @@ class btnTop_class(QMainWindow, Ui_dialog):
         Check.show()
     #-----------------------------------------------------!
 
-    # 이제는 필요없어진 기능
-    # 모델 창 띄우기
-    # def modelserach_show(self):
-    #     Modelsearch.show()
 
     # 회원탈퇴 페이지 쇼
     def memberdelete_show(self):
@@ -543,10 +470,6 @@ class btnTop_class(QMainWindow, Ui_dialog):
 
     def member_update_show(self):
         Update.show()
-
-    
-
-
 
 
 if __name__ == "__main__":
@@ -567,7 +490,7 @@ if __name__ == "__main__":
     #기부성공
     Check = Charity_Check_Class()
     #-----------------------------------------------------!
-    # Modelsearch = Model_search_class()
+
 
     #회원정보 수정
     Update=Member_Update_class()
