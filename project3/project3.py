@@ -179,7 +179,7 @@ class Member_delete_class(QDialog,member_delete_class):
         Memberdltsuc.show()
         Memberdelete.close()
 
-# 회원탈퇴 입력 창 클래스 지정하기
+# 회원탈퇴 입력 창 클래스 지정하기###
 class Member_dlt_suc_class(QDialog,member_dlt_suc_class):
     def __init__(self):
         super().__init__()

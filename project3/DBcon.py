@@ -30,7 +30,7 @@ class DBconn:
             return 0
         else:
             return name
-
+##
     def join_delete(self,input_id,pw):
         sql = f"delete from member where MEMBER_ID='{input_id}' AND MEMBER_PW='{pw}'"
         result = self.cursor.execute(sql)
