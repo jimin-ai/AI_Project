@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\SMT080\Desktop\1차poject_git\project3/main.ui'
+# Form implementation generated from reading ui file 'C:\Users\SMT022\Desktop\ddddd\project3\main.ui'
 #
 # Created by: PyQt5 UI code generator 5.9.2
 #
@@ -32,7 +32,6 @@ class Ui_dialog(object):
         self.app_combo_type = QtWidgets.QComboBox(self.stack_app)
         self.app_combo_type.setGeometry(QtCore.QRect(40, 90, 91, 31))
         self.app_combo_type.setObjectName("app_combo_type")
-        self.app_combo_type.addItem("")
         self.app_combo_type.addItem("")
         self.app_combo_type.addItem("")
         self.app_combo_type.addItem("")
@@ -81,11 +80,9 @@ class Ui_dialog(object):
         self.label_10.setGeometry(QtCore.QRect(590, 500, 101, 16))
         self.label_10.setObjectName("label_10")
         self.app_model_search = QtWidgets.QTableWidget(self.stack_app)
-        self.app_model_search.setGeometry(QtCore.QRect(40, 140, 541, 181))
-        self.app_model_search.setAutoScrollMargin(16)
-        self.app_model_search.setIconSize(QtCore.QSize(0, 1))
+        self.app_model_search.setGeometry(QtCore.QRect(40, 140, 621, 181))
         self.app_model_search.setObjectName("app_model_search")
-        self.app_model_search.setColumnCount(5)
+        self.app_model_search.setColumnCount(6)
         self.app_model_search.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.app_model_search.setHorizontalHeaderItem(0, item)
@@ -97,7 +94,8 @@ class Ui_dialog(object):
         self.app_model_search.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.app_model_search.setHorizontalHeaderItem(4, item)
-        self.app_model_search.verticalHeader().setVisible(False)
+        item = QtWidgets.QTableWidgetItem()
+        self.app_model_search.setHorizontalHeaderItem(5, item)
         self.stackedWidget.addWidget(self.stack_app)
         self.stack_result = QtWidgets.QWidget()
         self.stack_result.setObjectName("stack_result")
@@ -238,7 +236,6 @@ class Ui_dialog(object):
         self.app_combo_type.setItemText(3, _translate("dialog", "에어컨"))
         self.app_combo_type.setItemText(4, _translate("dialog", "세탁기"))
         self.app_combo_type.setItemText(5, _translate("dialog", "tv"))
-        self.app_combo_type.setItemText(6, _translate("dialog", "냉장고"))
         self.app_lineedit_search.setText(_translate("dialog", "모델명 검색"))
         self.app_btn_search.setText(_translate("dialog", "검색"))
         self.app_lbl_direct.setText(_translate("dialog", "직접등록"))
