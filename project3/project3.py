@@ -205,8 +205,54 @@ class btnTop_class(QMainWindow, Ui_dialog):
         # a=self.app_combo_type.currentText()
         self.app_btn_search.clicked.connect(self.app_search_show)
         # print(a)
+        # self.app_btn_register.clicked.connect(self.test_show)
+    #로그인한 아이디를 가져오는 함수
+    # def setId(self, id): #id = inputID를 의미
+    #     self.id = id #아이디를 가져와서 메인 클래스 안에서 사용할 수 있게 함.
+    #     print(self.id, '아이디 값을 잘 받아왔어용')
+        
+
+    # def test_show(self,inputModel):
+    #     result1 = dbConn.test_select(inputModel)
+     
+        
+        
+        # inputNum= 
+        # inputAppId= self.app_lineedit_search.text()
+        # inputPower= result1
+        # inputHours= self.app_lineedit_hour.text()
+        # inputId= self.        ############
+        
+        
+        # result=dbConn.test_insert(int(inputNum),inputAppId,int(inputPower),int(inputHours),inputId)
+        # if result==0:
+        #     print("회원가입 실패")
+        # else:
+        #     print("회원가입 성공")
+        #     self.app_lineedit_search("")    #값초기화
+        #     self.app_lineedit_hour.text("")
+            
+
+    
+    
+    
+    
+    
+    
+    
+    
     def app_search_show(self):
         combo_type_num = self.app_combo_type.currentIndex()
+        ###########self.pp_model_search
+        
+
+
+
+
+
+
+
+
 
         # 청소기
         if combo_type_num == 0:
@@ -420,6 +466,8 @@ class btnTop_class(QMainWindow, Ui_dialog):
                 a = Rf_carbon[i]
                 self.app_model_search.setRowCount(len(Rf_carbon))
                 self.app_model_search.setItem(i,4, QTableWidgetItem(str(a)))
+
+    
          
     def set_funcFrame(self):
         btn_c = self.sender()
@@ -470,6 +518,7 @@ class btnTop_class(QMainWindow, Ui_dialog):
 
     def member_update_show(self):
         Update.show()
+
 
 
 if __name__ == "__main__":

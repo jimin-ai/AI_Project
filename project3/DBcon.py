@@ -47,7 +47,27 @@ class DBconn:
         #pw랑 name은 문자형이라서 따옴표 붙힘.
         #age는 int형이라서 따옴표 붙이지 않음
 
-        
+    def test_insert(self,inputNum,inputAppId,inputPower,inputHours,inputId):
+        sql=f"""insert into member(REG_NUM,APP_ID,POWER,HOURS,MEMBER_ID) 
+        values('{inputNum}','{inputAppId}','{inputPower}','{inputHours}',{inputId})"""
+        result = self.cursor.execute(sql)
+        self.db.commit()
+        return result    
+
+    def test_select(self,inputModel):
+        sql=f"select POWER from homeappliances where MODEL_NAME='{inputModel}'"
+        result = self.cursor.execute(sql)
+        name = self.cursor.fetchall()
+        if result == 0:
+            return 0
+        else:
+            return name
+
+    def apple_select(self):
+        """select h.POWER,h.ENERGY_RATING
+        from homeappliances h,own_elec o 
+        where h.APP_ID=o.APP_ID"""
+       
 
     # 셀렉트 할 함수를 정의한다
     # 셀렉트 할 함수를 정의한다
@@ -354,74 +374,14 @@ class DBconn:
         for i in result:
             ho_list.append(i['CARBON_PRODUCT'])
         return ho_list
+    
 
 
 
-    # def HOMEAPP(self):
-    #     # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
-    #     # 빈 리스트 값을 지정해준다
-    #     homeapp_list=[]
-    #     # 값을 불러온다
-    #     select_sql = "select * from homeappliances"
-    #     # 값을 불러온다
-    #     self.cursor.execute(select_sql)
-    #     # 불러온 값을 저장한다
-    #     result=self.cursor.fetchall()
-    #     # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
-    #     # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
-    #     for i in result:
-    #         homeapp_list.append(i['MODEL_NAME'])
-    #     # 값을 반환해준다
-    #     return homeapp_list
 
-    # # 위와 동일
-    # def HOMEAPP1(self):
-    #     homeapp_list=[]
-    #     select_sql = "select * from homeappliances"
-    #     self.cursor.execute(select_sql)
-    #     result=self.cursor.fetchall()
-    #     for i in result:
-    #         homeapp_list.append(i['POWER'])
-    #     return homeapp_list
 
-    # def HOMEAPP2(self):
-    #     homeapp_list=[]
-    #     select_sql = "select * from homeappliances"
-    #     self.cursor.execute(select_sql)
-    #     result=self.cursor.fetchall()
-    #     for i in result:
-    #         homeapp_list.append(i['APP_SIZE'])
-    #     # df=pd.DataFrame(result)
-    #     return homeapp_list
-
-    # def HOMEAPP3(self):
-    #     homeapp_list=[]
-    #     select_sql = "select * from homeappliances"
-    #     self.cursor.execute(select_sql)
-    #     result=self.cursor.fetchall()
-    #     for i in result:
-    #         homeapp_list.append(i['ENERGY_RATING'])
-    #     # df=pd.DataFrame(result)
-    #     return homeapp_list
-
-    # def HOMEAPP4(self):
-    #     homeapp_list=[]
-    #     select_sql = "select * from homeappliances"
-    #     self.cursor.execute(select_sql)
-    #     result=self.cursor.fetchall()
-    #     for i in result:
-    #         homeapp_list.append(i['CARBON_PRODUCT'])
-    #     # df=pd.DataFrame(result)
-    #     return homeapp_list
+    
 
 
 
-    # def log(self):
-    #     pri_list=[]
-    #     select_sql = "select * from member"
-    #     self.cursor.execute(select_sql)
-    #     dic_list=self.cursor.fetchall()
-    #     for dic_change in dic_list:
-    #         pri_list.append(dic_change['MEMBER_ID'])
-    #     # df=pd.DataFrame(result)
-    #     return pri_list
+    
