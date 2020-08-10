@@ -37,12 +37,24 @@ class DBconn:
         self.db.commit()
         return result
 
+
+    def update_all(self, inputId, pwchange, namechange, phonechange, familychange):
+        sql = f"""update MEMBER set MEMBER_PW = '{pwchange}', MEMBER_NAME = '{namechange}',
+        MEMBER_PHONE = {phonechange}, FAMILY = {familychange} where MEMBER_ID = '{inputId}'"""
+        result = self.cursor.execute(sql)
+        self.db.commit()
+        return result
+        #pw랑 name은 문자형이라서 따옴표 붙힘.
+        #age는 int형이라서 따옴표 붙이지 않음
+
+        
+
     # 셀렉트 할 함수를 정의한다
     # 청소기
     def vc_name(self):
         # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
         # 빈 리스트 값을 지정해준다
-        ho_list=[]
+        homeapp_list=[]
         # 값을 불러온다
         select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'AC%'"
         # 값을 불러온다
