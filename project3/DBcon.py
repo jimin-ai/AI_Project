@@ -78,29 +78,82 @@ class DBconn:
         select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
         from homeappliances
         where APP_CODE='VC'
+        and CARBON_PRODUCT=1
         and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')
-        and POWER<=(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')"""
-
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')
+        order by POWER ASC"""
         self.cursor.execute(select_sql)
         # 불러온 값을 저장한다
         result=self.cursor.fetchall()
         # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
         # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
-        for i in result:
-            re_list1.append(i["MODEL_NAME"])
-        for i in result:
-            re_list2.append(i["POWER"])
-        for i in result:
-            re_list3.append(i["APP_SIZE"])
-        for i in result:
-            re_list4.append(i["ENERGY_RATING"])
-        for i in result:
-            re_list5.append(i["CARBON_PRODUCT"])
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='VC'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+        
+
         
         re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
         
         # # 값을 반환해준다
         return re_list6
+
 
     def recommend2_select(self):
         # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
@@ -114,32 +167,514 @@ class DBconn:
         # 값을 불러온다
         select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
         from homeappliances
-        where APP_CODE='VC'
-        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')
-        and POWER<=(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='VC')"""
+        where APP_CODE='MW'
+        and CARBON_PRODUCT=1
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='MW')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='MW')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+       
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+
+
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='MW'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='MW')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='MW')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+       
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+        re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
+        # # 값을 반환해준다
+        return re_list6
+
+    def recommend3_select(self):
+        # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
+        # 빈 리스트 값을 지정해준다
+        re_list1=[]
+        re_list2=[]
+        re_list3=[]
+        re_list4=[]
+        re_list5=[]
+        
+        # 값을 불러온다
+        select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='RC'
+        and CARBON_PRODUCT=1
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RC')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RC')
+        order by POWER ASC"""
 
         self.cursor.execute(select_sql)
         # 불러온 값을 저장한다
         result=self.cursor.fetchall()
         # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
         # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
-        for i in result:
-            re_list1.append(i["MODEL_NAME"])
-        for i in result:
-            re_list2.append(i["POWER"])
-        for i in result:
-            re_list3.append(i["APP_SIZE"])
-        for i in result:
-            re_list4.append(i["ENERGY_RATING"])
-        for i in result:
-            re_list5.append(i["CARBON_PRODUCT"])
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='RC'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RC')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RC')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+       
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+
+        
+        
+        re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
+        
+        # # 값을 반환해준다
+        return re_list6
+
+    def recommend4_select(self):
+        # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
+        # 빈 리스트 값을 지정해준다
+        re_list1=[]
+        re_list2=[]
+        re_list3=[]
+        re_list4=[]
+        re_list5=[]
+        
+        # 값을 불러온다
+        select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='AC'
+        and CARBON_PRODUCT=1
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='AC')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='AC')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='AC'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='AC')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='AC')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])        
         
         re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
         
         # # 값을 반환해준다
         return re_list6
     
-       
+    def recommend5_select(self):
+        # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
+        # 빈 리스트 값을 지정해준다
+        re_list1=[]
+        re_list2=[]
+        re_list3=[]
+        re_list4=[]
+        re_list5=[]
+        
+        # 값을 불러온다
+        select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='WS'
+        and CARBON_PRODUCT=1
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='WS')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='WS')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='WS'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='WS')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='WS')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+        
+        re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
+        
+        # # 값을 반환해준다
+        return re_list6
+
+    def recommend6_select(self):
+        # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
+        # 빈 리스트 값을 지정해준다
+        re_list1=[]
+        re_list2=[]
+        re_list3=[]
+        re_list4=[]
+        re_list5=[]
+        
+        # 값을 불러온다
+        select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='TV'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='TV'
+        and CARBON_PRODUCT=1
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])        
+        
+        re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
+        
+        # # 값을 반환해준다
+        return re_list6
+
+    def recommend7_select(self):
+        # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
+        # 빈 리스트 값을 지정해준다
+        re_list1=[]
+        re_list2=[]
+        re_list3=[]
+        re_list4=[]
+        re_list5=[]
+        
+        # 값을 불러온다
+        select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='RF'
+        and CARBON_PRODUCT=1
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RF')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RF')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+
+        select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
+        from homeappliances
+        where APP_CODE='RF'
+        and CARBON_PRODUCT=0
+        and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RF')
+        and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='RF')
+        order by POWER ASC"""
+        self.cursor.execute(select_sql1)
+        # 불러온 값을 저장한다
+        result=self.cursor.fetchall()
+        # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
+        # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
+        if len(result)>=5:
+        
+            for i in range(5):
+                re_list1.append(result[i]["MODEL_NAME"])
+            for i in range(5):
+                re_list2.append(result[i]["POWER"])
+            for i in range(5):
+                re_list3.append(result[i]["APP_SIZE"])
+            for i in range(5):
+                re_list4.append(result[i]["ENERGY_RATING"])
+            for i in range(5):
+                re_list5.append(result[i]["CARBON_PRODUCT"])
+        else:
+            for i in result:
+                re_list1.append(i["MODEL_NAME"])
+            for i in result:
+                re_list2.append(i["POWER"])
+            for i in result:
+                re_list3.append(i["APP_SIZE"])
+            for i in result:
+                re_list4.append(i["ENERGY_RATING"])
+            for i in result:
+                re_list5.append(i["CARBON_PRODUCT"])
+        
+        re_list6=[re_list1,re_list2,re_list3,re_list4,re_list5]
+        
+        # # 값을 반환해준다
+        return re_list6
+    
+
+
 
     # 셀렉트 할 함수를 정의한다
     # 셀렉트 할 함수를 정의한다

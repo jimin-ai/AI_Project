@@ -110,6 +110,11 @@ p, li { white-space: pre-wrap; }
        <string>tv</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>냉장고</string>
+      </property>
+     </item>
     </widget>
     <widget class="QLineEdit" name="app_lineedit_search">
      <property name="geometry">
@@ -393,8 +398,8 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="result_lbl_recommend">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>310</y>
+       <x>30</x>
+       <y>290</y>
        <width>271</width>
        <height>31</height>
       </rect>
@@ -406,12 +411,37 @@ p, li { white-space: pre-wrap; }
     <widget class="QTableWidget" name="result_table_recommend">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>360</y>
-       <width>421</width>
+       <x>30</x>
+       <y>390</y>
+       <width>551</width>
        <height>181</height>
       </rect>
      </property>
+     <column>
+      <property name="text">
+       <string>모델명</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>소비전력</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>용량</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>등급</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>탄소인증제품</string>
+      </property>
+     </column>
     </widget>
     <widget class="QLabel" name="result_lbl_power">
      <property name="geometry">
@@ -424,6 +454,97 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="text">
       <string>보유제품 소비전력&amp;소비전력 높은 제품 행 색깔 바꿔 알려주기</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_5">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>360</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>세탁기</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>330</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>전자렌지</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_3">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>330</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>전기밥솥</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_6">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>360</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>tv</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_7">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>360</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>냉장고</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_1">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>330</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>청소기</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="radioButton_4">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>330</y>
+       <width>90</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>에어컨</string>
      </property>
     </widget>
    </widget>
