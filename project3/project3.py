@@ -206,6 +206,13 @@ class btnTop_class(QMainWindow, Ui_dialog):
         self.app_btn_search.clicked.connect(self.app_search_show)
         # print(a)
         # self.app_btn_register.clicked.connect(self.test_show)
+        self.radioButton_1.clicked.connect(self.radioButton_1_show)
+        # self.radioButton_2.clicked.connect(self.radioButton_2_show)
+        # self.radioButton_3.clicked.connect(self.radioButton_3_show)
+        # self.radioButton_4.clicked.connect(self.radioButton_4_show)
+        # self.radioButton_5.clicked.connect(self.radioButton_5_show)
+        # self.radioButton_6.clicked.connect(self.radioButton_6_show)
+        # self.radioButton_7.clicked.connect(self.radioButton_7_show)
     #로그인한 아이디를 가져오는 함수
     # def setId(self, id): #id = inputID를 의미
     #     self.id = id #아이디를 가져와서 메인 클래스 안에서 사용할 수 있게 함.
@@ -231,6 +238,24 @@ class btnTop_class(QMainWindow, Ui_dialog):
         #     print("회원가입 성공")
         #     self.app_lineedit_search("")    #값초기화
         #     self.app_lineedit_hour.text("")
+
+    def radioButton_1_show(self):
+        recommend_vc = dbConn.recommend1_select()
+        # print(Vc_name)
+            # 디비에 값을 가져온다
+        self.result_table_recommend.setColumnCount(5)
+        self.result_table_recommend.setRowCount(10)
+        for j in range(len(recommend_vc[0])) :
+            for i in range(5):
+            # 값을 쉽게 입력하기 위해 변수 지정
+                a = recommend_vc[i][j]
+            # 불러올 값의 길이를(갯수) 정한다
+                self.result_table_recommend.setRowCount(len(recommend_vc))
+            # 모델에 i행 0열 에 a값 str로 입력
+                self.result_table_recommend.setItem(j,i,QTableWidgetItem(str(a))) 
+            # 위와 동일 방법
+        
+        
             
 
     
