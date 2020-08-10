@@ -7,11 +7,11 @@
 
 </head>
 <body>
-    <div id="446fd5ecd0384c8ca6fc885c23ef4dbb" class="chart-container" style="width:900px; height:500px;"></div>
+    <div id="c515cb7589a74ad0b6db4bb8a4f70d08" class="chart-container" style="width:350px; height:350px;"></div>
     <script>
-        var chart_446fd5ecd0384c8ca6fc885c23ef4dbb = echarts.init(
-            document.getElementById('446fd5ecd0384c8ca6fc885c23ef4dbb'), 'white', {renderer: 'canvas'});
-        var option_446fd5ecd0384c8ca6fc885c23ef4dbb = {
+        var chart_c515cb7589a74ad0b6db4bb8a4f70d08 = echarts.init(
+            document.getElementById('c515cb7589a74ad0b6db4bb8a4f70d08'), 'white', {renderer: 'canvas'});
+        var option_c515cb7589a74ad0b6db4bb8a4f70d08 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -81,7 +81,7 @@
                     "value": 1.29
                 }
             ],
-            "radius": 150,
+            "radius": 100,
             "center": [
                 "50%",
                 "50%"
@@ -104,11 +104,16 @@
                 "\uac15\uc6d0\uad8c",
                 "\uc81c\uc8fc"
             ],
-            "selected": {}
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
         }
     ],
     "tooltip": {
-        "show": true,
+        "show": false,
         "trigger": "item",
         "triggerOn": "mousemove|click",
         "axisPointer": {
@@ -123,9 +128,90 @@
         },
         "borderWidth": 0,
         "padding": 5
+    },
+    "title": [
+        {
+            "padding": 5,
+            "itemGap": 10
+        }
+    ],
+    "toolbox": {
+        "show": false,
+        "orient": "horizontal",
+        "itemSize": 15,
+        "itemGap": 10,
+        "left": "80%",
+        "feature": {
+            "saveAsImage": {
+                "type": "png",
+                "backgroundColor": "auto",
+                "connectedBackgroundColor": "#fff",
+                "show": true,
+                "title": "\u4fdd\u5b58\u4e3a\u56fe\u7247",
+                "pixelRatio": 1
+            },
+            "restore": {
+                "show": true,
+                "title": "\u8fd8\u539f"
+            },
+            "dataView": {
+                "show": true,
+                "title": "\u6570\u636e\u89c6\u56fe",
+                "readOnly": false,
+                "lang": [
+                    "\u6570\u636e\u89c6\u56fe",
+                    "\u5173\u95ed",
+                    "\u5237\u65b0"
+                ],
+                "backgroundColor": "#fff",
+                "textareaColor": "#fff",
+                "textareaBorderColor": "#333",
+                "textColor": "#000",
+                "buttonColor": "#c23531",
+                "buttonTextColor": "#fff"
+            },
+            "dataZoom": {
+                "show": true,
+                "title": {
+                    "zoom": "\u533a\u57df\u7f29\u653e",
+                    "back": "\u533a\u57df\u7f29\u653e\u8fd8\u539f"
+                },
+                "icon": {},
+                "xAxisIndex": false,
+                "yAxisIndex": false,
+                "filterMode": "filter"
+            },
+            "magicType": {
+                "show": true,
+                "type": [
+                    "line",
+                    "bar",
+                    "stack",
+                    "tiled"
+                ],
+                "title": {
+                    "line": "\u5207\u6362\u4e3a\u6298\u7ebf\u56fe",
+                    "bar": "\u5207\u6362\u4e3a\u67f1\u72b6\u56fe",
+                    "stack": "\u5207\u6362\u4e3a\u5806\u53e0",
+                    "tiled": "\u5207\u6362\u4e3a\u5e73\u94fa"
+                },
+                "icon": {}
+            },
+            "brush": {
+                "icon": {},
+                "title": {
+                    "rect": "\u77e9\u5f62\u9009\u62e9",
+                    "polygon": "\u5708\u9009",
+                    "lineX": "\u6a2a\u5411\u9009\u62e9",
+                    "lineY": "\u7eb5\u5411\u9009\u62e9",
+                    "keep": "\u4fdd\u6301\u9009\u62e9",
+                    "clear": "\u6e05\u9664\u9009\u62e9"
+                }
+            }
+        }
     }
 };
-        chart_446fd5ecd0384c8ca6fc885c23ef4dbb.setOption(option_446fd5ecd0384c8ca6fc885c23ef4dbb);
+        chart_c515cb7589a74ad0b6db4bb8a4f70d08.setOption(option_c515cb7589a74ad0b6db4bb8a4f70d08);
     </script>
 </body>
 </html>
