@@ -22,24 +22,24 @@ from main import Ui_dialog
 
 
 # 로그인 페이지 지정
-login_class = uic.loadUiType("project3/login.ui")[0]
+login_class = uic.loadUiType("login.ui")[0]
 # 회원가입 페이지 지정
-join_class = uic.loadUiType("project3/join.ui")[0]
+join_class = uic.loadUiType("join.ui")[0]
 # 회원가입 완료 페이지
-joincheck_class = uic.loadUiType("project3/joincheck.ui")[0]
+joincheck_class = uic.loadUiType("joincheck.ui")[0]
 # 로그인 실패
-loginfail_class = uic.loadUiType("project3/loginfail.ui")[0]
+loginfail_class = uic.loadUiType("loginfail.ui")[0]
 #-----------------------------------------------------!
 #기부 성공페이지
-charity_check_class = uic.loadUiType("project3/charitycheck.ui")[0]
-# model_search_class = uic.loadUiType("project3/modelsearch.ui")[0]
+charity_check_class = uic.loadUiType("charitycheck.ui")[0]
+# model_search_class = uic.loadUiType("modelsearch.ui")[0]
 #-----------------------------------------------------!
 #회원정보수정 페이지
-# member_update_class=uic.loadUiType("project3/update.ui")[0]
+member_update_class=uic.loadUiType("update.ui")[0]
 # 회원탈퇴 선택 페이지
-member_delete_class = uic.loadUiType("project3/memberdelete.ui")[0]
+member_delete_class = uic.loadUiType("memberdelete.ui")[0]
 # 회원탈퇴 입력 페이지
-member_dlt_suc_class = uic.loadUiType("project3/memberdeletesuccess.ui")[0]
+member_dlt_suc_class = uic.loadUiType("memberdeletesuccess.ui")[0]
 
 #-----------------------------------------------------!
 #기부성공페이지
@@ -124,33 +124,33 @@ class Joincheck_class(QDialog,joincheck_class):
         Join.close()
         Login.show()
 
-# 회원수정 페이지 클래스
-# class Member_Update_class(QDialog, member_update_class):
+#회원수정 페이지 클래스
+class Member_Update_class(QDialog, member_update_class):
 #     # 기본값 입력
-#     def __init__(self):
-#         super().__init__()
-#         self.setupUi(self)
-#         self.my_btn_updatedone.clicked.connect(self.member_update_close)
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.my_btn_updatedone.clicked.connect(self.member_update_close)
 
-#     def member_update_close(self):
-#         Update.close()
-#         # UpdateCheck.show()
-#         inputId = self.my_update_edit_id.text()
-#         inputPw = self.my_update_edit_pw.text()
-#         inputName = self.my_update_edit_name.text()
-#         inputPhone = self.my_update_edit_phone.text()
-#         inputFamily = self.my_update_edit_family.text()
+    def member_update_close(self):
+        Update.close()
+        #UpdateCheck.show()
+        inputId = self.my_update_edit_id.text()
+        inputPw = self.my_update_edit_pw.text()
+        inputName = self.my_update_edit_name.text()
+        inputPhone = self.my_update_edit_phone.text()
+        inputFamily = self.my_update_edit_family.text()
 
-#         result = dbConn.update_all(inputId, inputPw, inputName, inputPhone, inputFamily)
-#         if result ==0:
-#             print("회원정보 수정 실패")
-#         else:
-#             print(inputId, '회원정보 수정 완료 !')
-#             self.my_update_edit_id.setText("")    #값초기화
-#             self.my_update_edit_pw.setText("")
-#             self.my_update_edit_name.setText("")
-#             self.my_update_edit_phone.setText("")
-#             self.my_update_edit_family.setText("")
+        result = dbConn.update_all(inputId, inputPw, inputName, inputPhone, inputFamily)
+        if result ==0:
+            print("회원정보 수정 실패")
+        else:
+            print(inputId, '회원정보 수정 완료 !')
+            self.my_update_edit_id.setText("")    #값초기화
+            self.my_update_edit_pw.setText("")
+            self.my_update_edit_name.setText("")
+            self.my_update_edit_phone.setText("")
+            self.my_update_edit_family.setText("")
         
     
 
@@ -202,31 +202,6 @@ class Member_dlt_suc_class(QDialog,member_dlt_suc_class):
         else:
             Memberdltsuc.close()
 
-
-# # 모델 검색 창 클래스
-# class Model_search_class(QDialog,model_search_class):
-#     def __init__(self):
-#         super().__init__()
-#         self.setupUi(self)
-#         # 디비에 로그 값을 가져온다
-#         result = dbConn.log()
-#         # 디비에 로그1 값을 가져온다
-#         result1 = dbConn.log1()
-#         # 불러올 테이블 모델의 크기를 정한다 
-#         self.app_model_search.setRowCount(30)
-#         # 위 동일
-#         self.app_model_search.setColumnCount(5)
-#         # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
-#         for i in range(len(result1)):
-#             # 값을 쉽게 입력하기 위해 변수 지정
-#             a = result1[i]
-#             # 모델에 i행 0열 에 a값 str로 입력
-#             self.app_model_search.setItem(i,0, QTableWidgetItem(str(a)))
-#         # 위와 동일 방법
-#         for i in range(len(result)):
-#             a = result[i]
-#             self.app_model_search.setItem(i,1, QTableWidgetItem(str(a)))
-
 #메인_2 페이지 클래스
 class btnTop_class(QMainWindow, Ui_dialog):
     def __init__(self):
@@ -239,6 +214,7 @@ class btnTop_class(QMainWindow, Ui_dialog):
         self.btn_point.clicked.connect(self.set_funcFrame)
         #-----------------------------------------------------!
         self.point_btn_charity.clicked.connect(self.charity_class)
+        self.my_btn_update.clicked.connect(self.member_update_show)
         #-----------------------------------------------------!
         self.stackedWidget.setCurrentIndex(0) #main페이지가 로그인 했을 때 첫번째로 뜨게함.
         # self.show()
@@ -263,14 +239,7 @@ class btnTop_class(QMainWindow, Ui_dialog):
             self.app_model_search.setColumnCount(5)
             # 리스트로 불러온 값을 다시 하나씩 입력하기 위해 for문 사용
             
-            self.checkBoxList=[]
-            for i in range(len(Vc_name)):
-                ckbox=QCheckBox()
-                self.checkBoxList.append(ckbox)
-
-            for i in range(len(Vc_name)):
-                 QTableWidget().setCellWidget(i,5,self.checkBoxList[i])
-            QTableWidget().move(0,0)
+            
 
 
 
@@ -601,7 +570,7 @@ if __name__ == "__main__":
     # Modelsearch = Model_search_class()
 
     #회원정보 수정
-    # Update=Member_Update_class()
+    Update=Member_Update_class()
 
     # 회원탈퇴
     Memberdelete = Member_delete_class()
