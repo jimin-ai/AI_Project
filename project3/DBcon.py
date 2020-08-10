@@ -38,12 +38,13 @@ class DBconn:
         return result
 
     # 셀렉트 할 함수를 정의한다
-    def log1(self):
+    # 청소기
+    def vc_name(self):
         # 셀렉트 값이 딕셔너리라 리스트 값으로 변경하기 위해
         # 빈 리스트 값을 지정해준다
         ho_list=[]
         # 값을 불러온다
-        select_sql = "select * from homeappliances"
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'AC%'"
         # 값을 불러온다
         self.cursor.execute(select_sql)
         # 불러온 값을 저장한다
@@ -51,26 +52,292 @@ class DBconn:
         # 불러올 값을 for문으로 하나씩 리스트값에 append 해준다
         # 컬럼 형식의 열 값을 출력하기에 컬럼 명을 써준다
         for i in result:
-            ho_list.append(i['MODEL_NAME'])
+            ho_list.append(i["MODEL_NAME"])
         # 값을 반환해준다
         return ho_list
-
     # 위와 동일
-    def log(self):
+    def vc_power(self):
         ho_list=[]
-        select_sql = "select * from homeappliances"
+        select_sql = "select POWER from homeappliances where APP_ID like 'VC%'"
         self.cursor.execute(select_sql)
         result=self.cursor.fetchall()
         for i in result:
             ho_list.append(i['POWER'])
         return ho_list
+    def vc_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'VC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def vc_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'VC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def vc_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'VC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
+    
+    # 전자렌지 출력
+    def mw_name(self):
+        ho_list=[]
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'MW%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['MODEL_NAME'])
+        return ho_list
+    def mw_power(self):
+        ho_list=[]
+        select_sql = "select POWER from homeappliances where APP_ID like 'MW%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['POWER'])
+        return ho_list
+    def mw_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'MW%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def mw_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'MW%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def mw_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'MW%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
 
-    # def log(self):
-    #     pri_list=[]
-    #     select_sql = "select * from member"
-    #     self.cursor.execute(select_sql)
-    #     dic_list=self.cursor.fetchall()
-    #     for dic_change in dic_list:
-    #         pri_list.append(dic_change['MEMBER_ID'])
-    #     # df=pd.DataFrame(result)
-    #     return pri_list
+    # 전기밥솥
+    def rc_name(self):
+        ho_list=[]
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'RC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['MODEL_NAME'])
+        return ho_list
+    def rc_power(self):
+        ho_list=[]
+        select_sql = "select POWER from homeappliances where APP_ID like 'RC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['POWER'])
+        return ho_list
+    def rc_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'RC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def rc_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'RC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def rc_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'RC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
+
+    # 에어컨
+    def ac_name(self):
+        ho_list=[]
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'AC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['MODEL_NAME'])
+        return ho_list
+    def ac_power(self):
+        ho_list=[]
+        select_sql = "select POWER from homeappliances where APP_ID like 'AC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['POWER'])
+        return ho_list
+    def ac_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'AC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def ac_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'AC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def ac_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'AC%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
+
+
+    # 세탁기
+    def ws_name(self):
+        ho_list=[]
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'WS%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['MODEL_NAME'])
+        return ho_list
+    def ws_power(self):
+        ho_list=[]
+        select_sql = "select POWER from homeappliances where APP_ID like 'WS%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['POWER'])
+        return ho_list
+    def ws_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'WS%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def ws_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'WS%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def ws_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'WS%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
+
+    # 티브이
+    def tv_name(self):
+        ho_list=[]
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'TV%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['MODEL_NAME'])
+        return ho_list
+    def tv_power(self):
+        ho_list=[]
+        select_sql = "select POWER from homeappliances where APP_ID like 'TV%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['POWER'])
+        return ho_list
+    def tv_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'TV%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def tv_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'TV%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def tv_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'TV%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
+
+    # 냉장고
+    def rf_name(self):
+        ho_list=[]
+        select_sql = "select MODEL_NAME from homeappliances where APP_ID like 'RF%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['MODEL_NAME'])
+        return ho_list
+    def rf_power(self):
+        ho_list=[]
+        select_sql = "select POWER from homeappliances where APP_ID like 'RF%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['POWER'])
+        return ho_list
+    def rf_size(self):
+        ho_list=[]
+        select_sql = "select APP_SIZE from homeappliances where APP_ID like 'RF%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['APP_SIZE'])
+        return ho_list
+    def rf_rating(self):
+        ho_list=[]
+        select_sql = "select ENERGY_RATING from homeappliances where APP_ID like 'RF%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['ENERGY_RATING'])
+        return ho_list
+    def rf_product(self):
+        ho_list=[]
+        select_sql = "select CARBON_PRODUCT from homeappliances where APP_ID like 'RF%'"
+        self.cursor.execute(select_sql)
+        result=self.cursor.fetchall()
+        for i in result:
+            ho_list.append(i['CARBON_PRODUCT'])
+        return ho_list
