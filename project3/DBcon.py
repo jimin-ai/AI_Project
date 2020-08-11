@@ -516,7 +516,7 @@ class DBconn:
         select_sql = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
         from homeappliances
         where APP_CODE='TV'
-        and CARBON_PRODUCT=0
+        and CARBON_PRODUCT=1
         and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
         and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
         order by POWER ASC"""
@@ -550,7 +550,7 @@ class DBconn:
         select_sql1 = """select MODEL_NAME,POWER,APP_SIZE,ENERGY_RATING,CARBON_PRODUCT
         from homeappliances
         where APP_CODE='TV'
-        and CARBON_PRODUCT=1
+        and CARBON_PRODUCT=0
         and ENERGY_RATING<=(select h.ENERGY_RATING from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
         and POWER<(select h.POWER from homeappliances h,own_elec o where h.APP_ID=o.APP_ID and APP_CODE='TV')
         order by POWER ASC"""
